@@ -1,3 +1,3 @@
-const socket = require('socket.io-client')('http://localhost:3301')
+const socket = require('socket.io-client')('https://gamesback-jeza.onrender.com')
 
 export default socket;
