@@ -47,6 +47,10 @@ const GuessWord = () => {
             fetchRoom()
         }
 
+        socket.on('onUserLeaveGame', (role: string) => {
+            setResult(role === 'master' ? 'guesser' : 'master')
+        })
+
         socket.on('onMasterChoose', (choosedWord: string) => {
             setWord(choosedWord)
         })
@@ -82,6 +86,7 @@ const GuessWord = () => {
 
     const handleLeave = async () => {
         if (room) {
+            socket.emit('leaveGame', userRole, room.id)
             await RoomServices.leaveRoom(user, room.id);
             navigate('/');
         }

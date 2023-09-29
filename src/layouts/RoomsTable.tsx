@@ -1,4 +1,4 @@
-import { CircularProgress, Grid, Typography } from "@mui/material";
+import {Box, CircularProgress, Grid, Typography} from "@mui/material";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { fetchRooms, roomSelector, roomSelectorStatus } from "../redux/slices/roomSlice";
@@ -21,11 +21,17 @@ const RoomsTable = () => {
             container
             spacing={0}>
             {status === Status.LOADING ? (
-                <CircularProgress />
+                <Box sx={{display:'flex', width:"100%", justifyContent:'center'}}>
+                    <CircularProgress />
+                </Box>
             ) : status === Status.ERROR ? (
-                <Typography variant="body1">Ошибка при загрузке комнат.</Typography>
+                <Box sx={{display:'flex', width:"100%", justifyContent:'center'}}>
+                    <Typography variant="body1">Ошибка при загрузке комнат.</Typography>
+                </Box>
             ) : rooms.length === 0 ? (
-                <Typography variant="body1">Нет доступных комнат.</Typography>
+                <Box sx={{display:'flex', width:"100%", justifyContent:'center'}}>
+                    <Typography variant="body1">Нет доступных комнат.</Typography>
+                </Box>
             ) : (
                 rooms.map((room, index) => (
                     <Grid item xs={12} sm={12} md={10} lg={6} xl={3} key={index}>
