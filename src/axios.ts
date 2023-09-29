@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3301'
+    baseURL: 'https://gamesback-jeza.onrender.com'
 })
 
 export default instance
